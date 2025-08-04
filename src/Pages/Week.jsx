@@ -1,14 +1,19 @@
-import { useState, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import moment from "moment/moment";
-import { InputTask } from "../components/InputTask";
+import { today } from "../components/today";
+import { DateContext } from "../context/DateContext";
 
 export const Week = () => {
-  const [value, setValue] = useState(null);
-
-  const [fechaInicio, setFechaInicio] = useState(null);
-  const [fechaFin, setFechaFin] = useState(null);
+  const {
+    value,
+    setValue,
+    fechaFin,
+    setFechaFin,
+    fechaInicio,
+    setFechaInicio,
+  } = useContext(DateContext);
 
   // Seleccion de fechas
   useEffect(() => {
@@ -20,15 +25,16 @@ export const Week = () => {
     }
   }, [value]);
 
-  //Para selecionar el dia actual formateado
-
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-
   return (
     <>
       <div className="mt-7">
-        <Calendar onChange={(e) => setValue(e)} minDate={today} selectRange />
+        <Calendar
+          className="rounded-lg p-4 text-gray-800"
+          onChange={(e) => setValue(e)}
+          minDate={today}
+          selectRange
+          locale="en"
+        />
       </div>
       {value !== null && (
         <div className=" mt-2 text-center text-amber-50 w-full ">
@@ -37,7 +43,6 @@ export const Week = () => {
           </p>
         </div>
       )}
-      <InputTask></InputTask>
     </>
   );
 };
