@@ -1,6 +1,5 @@
-import { InputTask } from "./components/InputTask";
 import { Navbar } from "./components/Navbar";
-import { NavLinks } from "./Pages/Routes/NavLinks";
+import { Rutas } from "./Pages/Routes/Rutas";
 
 function ToDoApp() {
   return (
@@ -9,11 +8,7 @@ function ToDoApp() {
       style={{ backgroundImage: `url("/Fondo.jpg")` }}
     >
       <Navbar />
-      <NavLinks></NavLinks>
-
-      <div className="flex flex-col justify-start items-center w-full md:w-[35rem] dark:bg-gray-700 rounded-lg px-6 py-8 ring shadow-xl ring-gray-900/6">
-        <InputTask />
-      </div>
+      <Rutas />
     </div>
   );
 }

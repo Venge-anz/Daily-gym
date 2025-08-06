@@ -1,7 +1,6 @@
-import { NavLink } from "react-router";
-import { Rutas } from "./Routes";
+import { NavLink, Outlet } from "react-router";
 
-export const NavLinks = () => {
+export const NavLinksCreate = () => {
   return (
     <>
       <div className="flex flex-col justify-center items-center dark:bg-gray-700 rounded-lg px-6 py-8 ring shadow-xl ring-gray-900/6 w-full max-w-md">
@@ -15,7 +14,7 @@ export const NavLinks = () => {
             className={({ isActive }) =>
               isActive ? "text-stone-100 font-semibold" : "text-stone-400"
             }
-            to="/day"
+            to="day"
             end
           >
             Day
@@ -24,7 +23,7 @@ export const NavLinks = () => {
             className={({ isActive }) =>
               isActive ? "text-stone-100 font-semibold" : "text-stone-400"
             }
-            to="/week"
+            to="week"
             end
           >
             Week
@@ -33,14 +32,13 @@ export const NavLinks = () => {
             className={({ isActive }) =>
               isActive ? "text-stone-100 font-semibold" : "text-stone-400"
             }
-            to="/month"
+            to="month"
             end
           >
             Month
           </NavLink>
         </div>
-
-        <Rutas />
+        <Outlet></Outlet>
       </div>
     </>
   );
