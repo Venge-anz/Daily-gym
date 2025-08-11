@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { TareaContext } from "../context/tareaContext";
 import { DateContext } from "../context/DateContext";
 
@@ -22,10 +22,19 @@ export const AppProviders = ({ children }) => {
   const [fechaInicio, setFechaInicio] = useState(null);
   const [fechaFin, setFechaFin] = useState(null);
 
+  //Modo edicion
   const [addWithoutDate, setAddWithoutDate] = useState(true);
 
+  //Estado para guardar las tareas
+  const [taskSaved, setTaskSaved] = useState([]);
+
+  // Estado del si el boton de guardar task a notas ha sido pulsado o no
+  const [isLoadingToNotes, setisLoadingToNotes] = useState(false);
+
+  console.log(taskSaved);
+
   return (
-    <DateContext
+    <DateContext.Provider
       value={{
         value,
         setValue,
@@ -51,10 +60,14 @@ export const AppProviders = ({ children }) => {
           setModoEdicion,
           editIndex,
           setEditIndex,
+          taskSaved,
+          setTaskSaved,
+          isLoadingToNotes,
+          setisLoadingToNotes,
         }}
       >
         {children}
       </TareaContext.Provider>
-    </DateContext>
+    </DateContext.Provider>
   );
 };

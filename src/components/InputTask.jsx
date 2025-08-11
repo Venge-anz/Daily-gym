@@ -5,7 +5,7 @@ import { ButtonAdd } from "./ButtonAdd";
 import { ButtonEdit } from "./ButtonEdit";
 import { TareaContext } from "../context/tareaContext";
 import { DateContext } from "../context/DateContext";
-import { months } from "moment/moment";
+import { ButtonSave } from "./ButtonSave";
 
 export const InputTask = () => {
   //Sacamos lo necesario del Provider
@@ -17,9 +17,7 @@ export const InputTask = () => {
     setModoEdicion,
     modoEdicion,
     setEditIndex,
-    fechaInicio,
-    fechaFin,
-    month,
+    isLoadingToNotes,
   } = useContext(TareaContext);
 
   const { addWithoutDate, day } = useContext(DateContext);
@@ -46,6 +44,8 @@ export const InputTask = () => {
 
   //Logica para mostrar la fecha debajo del input
 
+  // ...
+
   return (
     <>
       {addWithoutDate === false ? (
@@ -54,7 +54,7 @@ export const InputTask = () => {
           role="alert"
         >
           <strong className="font-bold">ERROR </strong>
-          <img src="public/select.gif" alt="SelectImage"></img>
+          <img src="/select.gif" alt="SelectImage"></img>
           <span className="block sm:inline">
             You must select a valid date before continuing.
           </span>
@@ -73,23 +73,32 @@ export const InputTask = () => {
             {modoEdicion === false ? <ButtonAdd /> : <ButtonEdit />}
           </form>
 
-          <div className="flex justify-center  mb-3 text-center text-amber-50 ">
-            {tarea.length <= 0 ? (
+          {/* Anidamos las 3 condiciones en un ternario  */}
+
+          <div className="flex justify-center mb-3 text-center text-amber-50">
+            {isLoadingToNotes === true ? (
               <div className="text-gray-500 mt-30 text-center font-semibold rounded-lg shadow-md/30 p-5 w-40">
-                <img src="public/muscle.gif" alt="training" />
+                <img src="/hecho.gif" alt="imgDone" />
+                <p className="border">WELL DONE!</p>
+              </div>
+            ) : tarea.length <= 0 ? (
+              <div className="text-gray-500 mt-30 text-center font-semibold rounded-lg shadow-md/30 p-5 w-40">
+                <img src="/muscle.gif" alt="training" />
                 <p className="border">NO RESULTS</p>
               </div>
             ) : (
-              <div className="flex items-end w-140 px-4 py-2 ">
+              <div className="flex items-end w-140 px-4 py-2">
                 <div className="flex-1 flex justify-center items-center">
-                  <p className="text-white mt-5 text-center font-semibold px-4 py-2 rounded-lg ml-20 shadow-md/30 text-lg ">
+                  <p className="text-white mt-5 text-center font-semibold px-4 py-2 rounded-lg shadow-md/30 text-lg">
                     TRAINING
                   </p>
+                  <p>{day}</p>
                 </div>
               </div>
             )}
           </div>
 
+          {/* //Input */}
           {tarea.map((input, index) => (
             <label
               key={index}
@@ -109,6 +118,7 @@ export const InputTask = () => {
           ))}
         </>
       )}
+      <ButtonSave></ButtonSave>
     </>
   );
 };

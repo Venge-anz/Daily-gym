@@ -6,7 +6,12 @@ import BrowserUpdatedIcon from "@mui/icons-material/BrowserUpdated";
 import GroupIcon from "@mui/icons-material/Group";
 import { Link } from "react-router";
 
+import { useContext } from "react";
+import { TareaContext } from "../context/tareaContext";
+
 export const Navbar = () => {
+  const { isLoadingToNotes } = useContext(TareaContext);
+
   return (
     <>
       <nav className="fixed top-10 left-6 w-32 h-[43rem] text-stone-300 dark:bg-gray-700 shadow-md rounded-xl px-4 py-6">
@@ -34,7 +39,16 @@ export const Navbar = () => {
                 className="text-slate-500"
                 fontSize="small"
               ></NotesIcon>
-              <a href="/notes">Notes</a>
+              <a
+                className={
+                  isLoadingToNotes === true
+                    ? "animate__animated animate__shakeX --animate-duration: 0.1s;"
+                    : ""
+                }
+                href="/notes"
+              >
+                Notes
+              </a>
             </li>
 
             <li className="flex flex-row items-center gap-2 hover:text-yellow-200">
