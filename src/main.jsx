@@ -4,13 +4,14 @@ import { BrowserRouter } from "react-router";
 
 import ToDoApp from "./ToDoApp.jsx";
 import { AppProviders } from "./providers/AppProviders.jsx";
+import "./style.css";
 
 createRoot(document.getElementById("root")).render(
-  <BrowserRouter>
-    <StrictMode>
+  <StrictMode>
+    <BrowserRouter>
       <AppProviders>
         <ToDoApp />
       </AppProviders>
-    </StrictMode>
-  </BrowserRouter>
+    </BrowserRouter>
+  </StrictMode>
 );

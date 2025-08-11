@@ -4,12 +4,15 @@ export const NavLinksCreate = () => {
   return (
     <>
       <div className="flex flex-col justify-center items-center dark:bg-gray-700 rounded-lg px-6 py-8 ring shadow-xl ring-gray-900/6 w-full max-w-md">
-        <img src="public/muscle.png" alt="emoticono" className="w-10 mb-2" />
-        <h1 className="text-xl text-stone-300 font-extrabold mb-3">
-          Just Do it
+        <h1 className="text-lg font-semibold text-left border border-amber-50 p-2 text-stone-300 mb-10">
+          JUST
+          <br />
+          DO
+          <br />
+          IT.
         </h1>
 
-        <div className="flex justify-center gap-6 border-b-2 border-gray-500 mb-4 w-full">
+        <div className="flex justify-center gap-6 border-b border-gray-500 mb-4 w-60">
           <NavLink
             className={({ isActive }) =>
               isActive ? "text-stone-100 font-semibold" : "text-stone-400"
