@@ -3,6 +3,7 @@ import { Day, Week, Month, CreateTask } from "../CreateTaskPage/index.js";
 import { Portada } from "../PortadaPage/Portada.jsx";
 import { HelpPage } from "../HelpPage/HelpPage.jsx";
 import { Notes } from "../NotesPage/Notes.jsx";
+import { Register } from "../Register/Register.jsx";
 
 export const Rutas = () => {
   return (
@@ -18,8 +19,9 @@ export const Rutas = () => {
           <Route path="month" element={<Month />} />
         </Route>
 
-        <Route path="/help" element={<HelpPage></HelpPage>}></Route>
+        <Route path="/register" element={<Register></Register>}></Route>
         <Route path="/notes" element={<Notes></Notes>}></Route>
+        <Route path="/help" element={<HelpPage></HelpPage>}></Route>
 
         <Route path="/*" element={<Portada />}></Route>
       </Routes>
