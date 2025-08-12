@@ -3,6 +3,7 @@ import NotesIcon from "@mui/icons-material/Notes";
 import InboxIcon from "@mui/icons-material/Inbox";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import BrowserUpdatedIcon from "@mui/icons-material/BrowserUpdated";
+import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
 import GroupIcon from "@mui/icons-material/Group";
 import { Link } from "react-router";
 
@@ -29,6 +30,14 @@ export const Navbar = () => {
           </div>
 
           <ul className="flex flex-col gap-3 text-sm text-slate-300 w-full text-center">
+            <li className="flex flex-row items-center gap-2 hover:text-yellow-200">
+              <AppRegistrationIcon
+                className="text-slate-500"
+                fontSize="small"
+              ></AppRegistrationIcon>
+              <a href="/register">Register</a>
+            </li>
+
             <li className="flex flex-row items-center gap-2 hover:text-yellow-200">
               <AddIcon className="text-slate-500" fontSize="small"></AddIcon>
               <a href="/create">Create</a>
