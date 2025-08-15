@@ -1,5 +1,5 @@
 import { Navbar } from "./components/Navbar";
-import { Rutas } from "./Pages/Routes/Rutas";
+import { Rutas } from "./Rutas";
 
 function ToDoApp() {
   return (

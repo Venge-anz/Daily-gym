@@ -1,9 +1,8 @@
-import AddIcon from "@mui/icons-material/Add";
-import NotesIcon from "@mui/icons-material/Notes";
-import InboxIcon from "@mui/icons-material/Inbox";
+import TextSnippetIcon from "@mui/icons-material/TextSnippet";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
-import BrowserUpdatedIcon from "@mui/icons-material/BrowserUpdated";
-import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
+import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
+import LoginIcon from "@mui/icons-material/Login";
+import SettingsIcon from "@mui/icons-material/Settings";
 import GroupIcon from "@mui/icons-material/Group";
 import { Link } from "react-router";
 
@@ -15,7 +14,7 @@ export const Navbar = () => {
 
   return (
     <>
-      <nav className="fixed top-10 left-6 w-32 h-[43rem] text-stone-300 dark:bg-gray-700 shadow-md rounded-xl px-4 py-6">
+      <nav className="fixed top-10 left-6 w-28 h-[43rem] text-slate-300 dark:bg-gray-700 shadow-md rounded-xl px-4 py-6">
         <div className="flex flex-col  items-center h-full">
           <div className="mb-6 self-center border-1 p-2">
             <Link to="/portada">
@@ -30,68 +29,42 @@ export const Navbar = () => {
           </div>
 
           <ul className="flex flex-col gap-3 text-sm text-slate-300 w-full text-center">
-            <li className="flex flex-row items-center gap-2 hover:text-yellow-200">
-              <AppRegistrationIcon
-                className="text-slate-500"
-                fontSize="small"
-              ></AppRegistrationIcon>
-              <a href="/register">Register</a>
-            </li>
-
-            <li className="flex flex-row items-center gap-2 hover:text-yellow-200">
-              <AddIcon className="text-slate-500" fontSize="small"></AddIcon>
-              <a href="/create">Create</a>
-            </li>
-
-            <li className="flex flex-row items-center gap-2 hover:text-yellow-200">
-              <NotesIcon
-                className="text-slate-500"
-                fontSize="small"
-              ></NotesIcon>
-              <a
+            <li className="flex flex-col items-center gap-2 hover:text-yellow-200">
+              <FitnessCenterIcon
                 className={
                   isLoadingToNotes === true
                     ? "animate__animated animate__shakeX --animate-duration: 0.1s;"
                     : ""
                 }
-                href="/notes"
-              >
-                Notes
-              </a>
+                fontSize="small"
+              ></FitnessCenterIcon>
+              <Link to="/home">Home</Link>
             </li>
 
-            <li className="flex flex-row items-center gap-2 hover:text-yellow-200">
-              <InboxIcon
-                className="text-slate-500"
-                fontSize="small"
-              ></InboxIcon>
-              <a href="/inbox">Inbox</a>
+            <li className="flex flex-col items-center gap-2 hover:text-yellow-200">
+              <TextSnippetIcon fontSize="small"></TextSnippetIcon>
+              <Link to="/notes">Notes</Link>
             </li>
           </ul>
 
           {/* //Parte de abajo */}
 
           <ul className="flex flex-col text-sm gap-3 text-slate-300 w-full mt-auto text-center">
-            <li className="flex flex-row items-center gap-2 hover:text-yellow-200">
-              <GroupIcon
-                className="text-slate-500"
-                fontSize="small"
-              ></GroupIcon>
-              <a href="/invite">Invite</a>
+            <li className="flex flex-col items-center gap-2 hover:text-yellow-200">
+              <LoginIcon fontSize="small"></LoginIcon>
+              <Link to="/login">Login</Link>
             </li>
-            <li className="flex flex-row items-center gap-2 hover:text-yellow-200">
-              <HelpOutlineIcon
-                className="text-slate-500"
-                fontSize="small"
-              ></HelpOutlineIcon>
-              <a href="/help">Help</a>
+            <li className="flex flex-col items-center gap-2 hover:text-yellow-200">
+              <SettingsIcon fontSize="small"></SettingsIcon>
+              <Link to="/setting">Setting</Link>
             </li>
-            <li className="flex flex-row items-center gap-2 hover:text-yellow-200">
-              <BrowserUpdatedIcon
-                className="text-slate-500"
-                fontSize="small"
-              ></BrowserUpdatedIcon>
-              <a href="/update">Update</a>
+            <li className="flex flex-col items-center gap-2 hover:text-yellow-200">
+              <GroupIcon fontSize="small"></GroupIcon>
+              <Link to="/invite">Invite</Link>
+            </li>
+            <li className="flex flex-col items-center gap-2 hover:text-yellow-200">
+              <HelpOutlineIcon fontSize="small"></HelpOutlineIcon>
+              <Link to="/help">Help</Link>
             </li>
           </ul>
         </div>

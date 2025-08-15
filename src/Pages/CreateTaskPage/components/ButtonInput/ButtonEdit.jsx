@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { TareaContext } from "../context/tareaContext";
+import { TareaContext } from "../../../../context/tareaContext";
 
 export const ButtonEdit = () => {
   const {

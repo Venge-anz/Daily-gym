@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import { TareaContext } from "../context/tareaContext";
-import { DateContext } from "../context/DateContext";
+import { TareaContext } from "../../../../context/tareaContext";
+import { DateContext } from "../../../../context/DateContext";
 
-export const ButtonAdd = () => {
-  const { inputTarea, tarea, setTarea, setInputTarea } =
+export const ButtonAddInput = () => {
+  const { inputTarea, setInputTarea, setTarea, tarea } =
     useContext(TareaContext);
 
   const { value, setAddWithoutDate, addWithoutDate } = useContext(DateContext);
@@ -20,8 +20,6 @@ export const ButtonAdd = () => {
       setTarea([...tarea, inputMayuscula]);
       setInputTarea("");
 
-
-      
       //Condicion enviar tarea sin fecha
     }
     if (value) {

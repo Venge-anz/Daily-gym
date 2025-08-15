@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditNoteIcon from "@mui/icons-material/EditNote";
-import { ButtonAdd } from "./ButtonAdd";
-import { ButtonEdit } from "./ButtonEdit";
-import { TareaContext } from "../context/tareaContext";
-import { DateContext } from "../context/DateContext";
-import { ButtonSave } from "./ButtonSave";
+import { ButtonAddInput } from "./ButtonInput/ButtonAddInput";
+import { ButtonEdit } from "./ButtonInput/ButtonEdit";
+import { TareaContext } from "../../../context/tareaContext";
+import { DateContext } from "../../../context/DateContext";
+import { ButtonSave } from "./ButtonInput/ButtonSave";
 
 export const InputTask = () => {
   //Sacamos lo necesario del Provider
@@ -70,7 +70,7 @@ export const InputTask = () => {
               className="flex-grow bg-white text-gray-800 px-4 py-2 rounded-l-md outline-none focus:ring-2 focus:ring-[#477984]"
             />
 
-            {modoEdicion === false ? <ButtonAdd /> : <ButtonEdit />}
+            {modoEdicion === false ? <ButtonAddInput /> : <ButtonEdit />}
           </form>
 
           {/* Anidamos las 3 condiciones en un ternario  */}
@@ -92,7 +92,9 @@ export const InputTask = () => {
                   <p className="text-white mt-5 text-center font-semibold px-4 py-2 rounded-lg shadow-md/30 text-lg">
                     TRAINING
                   </p>
-                  <p>{day}</p>
+
+                  {/* Arreglar esto */}
+                  <p>{day}</p> 
                 </div>
               </div>
             )}
