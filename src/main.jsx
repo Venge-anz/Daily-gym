@@ -7,11 +7,9 @@ import { AppProviders } from "./providers/AppProviders.jsx";
 import "./style.css";
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <BrowserRouter>
-      <AppProviders>
-        <ToDoApp />
-      </AppProviders>
-    </BrowserRouter>
-  </StrictMode>
+  <BrowserRouter>
+    <AppProviders>
+      <ToDoApp />
+    </AppProviders>
+  </BrowserRouter>
 );
