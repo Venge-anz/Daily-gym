@@ -1,26 +1,37 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditNoteIcon from "@mui/icons-material/EditNote";
-import { ButtonAddInput } from "./ButtonInput/ButtonAddInput";
-import { ButtonEdit } from "./ButtonInput/ButtonEdit";
 import { TareaContext } from "../../../context/tareaContext";
 import { DateContext } from "../../../context/DateContext";
-import { ButtonSave } from "./ButtonInput/ButtonSave";
+import { Button } from "../../../components/Botones/Button";
+import { useEdit, useAdd, useSave } from "../../../hooks";
 
 export const InputTask = () => {
-  //Sacamos lo necesario del Provider
-  const {
-    inputTarea,
-    tarea,
-    setTarea,
-    setInputTarea,
-    setModoEdicion,
-    modoEdicion,
-    setEditIndex,
-    isLoadingToNotes,
-  } = useContext(TareaContext);
+  //Sacamos lo necesario de los Provider
+  const { inputTarea, tarea, setTarea, setInputTarea } =
+    useContext(TareaContext);
 
-  const { addWithoutDate, day } = useContext(DateContext);
+  const { day, addWithoutDate } = useContext(DateContext);
+
+  //Estado para el modo de edicion del boton editar
+  const [modoEdicion, setModoEdicion] = useState(false);
+  const [editIndex, setEditIndex] = useState(null);
+
+  //BOTON EDITAR
+  const { editButton } = useEdit(
+    modoEdicion,
+    setModoEdicion,
+    editIndex,
+    setEditIndex
+  );
+
+  //BOTON ADD TAREA
+
+  const { addTarea } = useAdd();
+
+  //BOTON GUARDAR
+
+  const { saveTasks, isLoadingToNotes } = useSave();
 
   //El input //REPASAR ESTA FUNCION
   const inputFunction = (e) => {
@@ -61,16 +72,28 @@ export const InputTask = () => {
         </div>
       ) : (
         <>
-          <form onSubmit={onsubmit} className="flex w-full">
+          <form onSubmit={onsubmit} className="flex w-full ">
             <input
               type="text"
               placeholder="Add an exercise..."
               onChange={inputFunction}
               value={inputTarea}
-              className="flex-grow bg-white text-gray-800 px-4 py-2 rounded-l-md outline-none focus:ring-2 focus:ring-[#477984]"
+              className="flex-grow bg-white text-gray-800 px-4 rounded-l-md outline-none focus:ring-2 focus:ring-[#477984]"
             />
 
-            {modoEdicion === false ? <ButtonAddInput /> : <ButtonEdit />}
+            {modoEdicion === false ? (
+              <Button
+                className="bg-[#477984] text-white px-4 cursor-pointer py-2 rounded-l-md transition-all duration-200 border-2 border-transparent hover:border-pink-400"
+                fn={addTarea}
+                nombre="Add"
+              />
+            ) : (
+              <Button
+                className="bg-[#477984] text-white px-4 cursor-pointer py-2 rounded-l-md transition-all duration-200 border-2 border-transparent hover:border-pink-400"
+                fn={editButton}
+                nombre="Edit"
+              />
+            )}
           </form>
 
           {/* Anidamos las 3 condiciones en un ternario  */}
@@ -92,9 +115,8 @@ export const InputTask = () => {
                   <p className="text-white mt-5 text-center font-semibold px-4 py-2 rounded-lg shadow-md/30 text-lg">
                     TRAINING
                   </p>
-
                   {/* Arreglar esto */}
-                  <p>{day}</p> 
+                  <p>{day}</p>
                 </div>
               </div>
             )}
@@ -118,9 +140,11 @@ export const InputTask = () => {
               </div>
             </label>
           ))}
+          {addWithoutDate && tarea.length > 0 && (
+            <Button fn={saveTasks} nombre="Guardar"></Button>
+          )}
         </>
       )}
-      <ButtonSave></ButtonSave>
     </>
   );
 };

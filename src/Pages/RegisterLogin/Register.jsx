@@ -41,7 +41,7 @@ export const Register = () => {
         {/* Texto adicional */}
         <p className="mt-6 text-gray-400 text-sm">
           Already have an account?{" "}
-          <a href="/" className="text-amber-300 hover:underline">
+          <a href="/login" className="text-amber-300 hover:underline">
             Log in
           </a>
         </p>
