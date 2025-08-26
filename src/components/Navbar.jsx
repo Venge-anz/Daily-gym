@@ -7,9 +7,11 @@ import GroupIcon from "@mui/icons-material/Group";
 import { Link } from "react-router";
 import { useContext } from "react";
 import { TareaContext } from "../context/tareaContext";
+import { NoteContext } from "../context/NoteContext";
 
 export const Navbar = () => {
-  const { isLoadingToNotes } = useContext(TareaContext);
+  const { isLoadingToHome } = useContext(TareaContext);
+  const { isLoadingToNotes } = useContext(NoteContext);
 
   return (
     <>
@@ -31,7 +33,7 @@ export const Navbar = () => {
             <li className="flex flex-col items-center gap-2 hover:text-yellow-200">
               <FitnessCenterIcon
                 className={
-                  isLoadingToNotes === true
+                  isLoadingToHome === true
                     ? "animate__animated animate__shakeX --animate-duration: 0.1s;"
                     : ""
                 }
@@ -41,7 +43,14 @@ export const Navbar = () => {
             </li>
 
             <li className="flex flex-col items-center gap-2 hover:text-yellow-200">
-              <TextSnippetIcon fontSize="small"></TextSnippetIcon>
+              <TextSnippetIcon
+                fontSize="small"
+                className={
+                  isLoadingToNotes === true
+                    ? "animate__animated animate__shakeX --animate-duration: 0.1s;"
+                    : ""
+                }
+              ></TextSnippetIcon>
               <Link to="/notes">Notes</Link>
             </li>
           </ul>

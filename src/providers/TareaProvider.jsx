@@ -6,14 +6,11 @@ export const TareaProvider = ({ children }) => {
   const [inputTarea, setInputTarea] = useState(""); //el input
   const [tarea, setTarea] = useState([]); //la lista de tareas
 
-  //Estado para guardar las tareas
-  const [taskSaved, setTaskSaved] = useState([]);
-
   //Estado para almacenar los task por fecha y grupos
   const [gruposTask, setGruposTask] = useState([]);
 
   // Estado del si el boton de guardar task a notas ha sido pulsado o no
-  const [isLoadingToNotes, setisLoadingToNotes] = useState(false);
+  const [isLoadingToHome, setisLoadingToHome] = useState(false);
 
   return (
     <TareaContext.Provider
@@ -22,12 +19,10 @@ export const TareaProvider = ({ children }) => {
         setInputTarea,
         tarea,
         setTarea,
-        taskSaved,
-        setTaskSaved,
         gruposTask,
         setGruposTask,
-        isLoadingToNotes,
-        setisLoadingToNotes,
+        isLoadingToHome,
+        setisLoadingToHome,
       }}
     >
       {children}

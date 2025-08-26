@@ -5,7 +5,6 @@ import { Button } from "../../components/Botones/Button";
 
 export const Home = () => {
   const { gruposTask } = useContext(TareaContext);
-  // const { day } = useContext(DateContext);
 
   const navigate = useNavigate();
 
@@ -27,11 +26,13 @@ export const Home = () => {
                 key={id}
                 className="flex flex-col justify-center dark:bg-gray-700 rounded-lg px-8 py-6 ring shadow-xl ring-gray-900/6"
               >
-                {/* <h1 className="text-center text-gray-300 border rounded mb-3">
+                {/* fecha  */}
+                <h1 className="text-center text-gray-300 border rounded mb-3">
                   {grupo.day}
-                </h1> */}
+                </h1>
+
                 <ol className="list-disc list-inside text-gray-300 space-y-1">
-                  {grupo.taskSaved.map((task, i) => (
+                  {grupo.tarea.map((task, i) => (
                     <li key={i} className="text-gray-300">
                       {task}
                     </li>
