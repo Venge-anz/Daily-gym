@@ -9,6 +9,9 @@ export const NoteProvider = ({ children }) => {
   const [inputNotas, setInputNotas] = useState("");
   const [groupNotes, setGroupNotes] = useState([]);
 
+  //Estado para manejar el error
+  const [addWithoutCategory, setAddWithoutCategory] = useState(true);
+
   // Estado del si el boton de guardar task a notas ha sido pulsado o no
   const [isLoadingToNotes, setisLoadingToNotes] = useState(false);
 
@@ -23,6 +26,8 @@ export const NoteProvider = ({ children }) => {
         setGroupNotes,
         isLoadingToNotes,
         setisLoadingToNotes,
+        setAddWithoutCategory,
+        addWithoutCategory,
       }}
     >
       {children}

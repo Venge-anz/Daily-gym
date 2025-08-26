@@ -6,6 +6,12 @@ import { DateContext } from "../../../context/DateContext";
 import { Button } from "../../../components/Botones/Button";
 import { useEdit, useAdd, useSave } from "../../../hooks";
 
+//icono de borrar (funcion pura)
+
+export const deleteTarea = (tareas, index) => {
+  return tareas.filter((_, i) => i !== index);
+};
+
 export const InputTask = () => {
   //Sacamos lo necesario de los Provider
   const { inputTarea, tarea, setTarea, setInputTarea } =
@@ -38,13 +44,6 @@ export const InputTask = () => {
     setInputTarea(e.target.value);
   };
 
-  //icono de borrar
-
-  const deleteTarea = (index) => {
-    const nuevasTareas = tarea.filter((_, i) => i !== index);
-    setTarea(nuevasTareas);
-  };
-
   //icono de editar
 
   const editIcon = (index) => {
@@ -64,7 +63,7 @@ export const InputTask = () => {
           className="flex flex-col justify-center items-center bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative max-w-md"
           role="alert"
         >
-          <strong className="font-bold">ERROR </strong>
+          <strong className="font-bold">⚠ ERROR </strong>
           <img src="/select.gif" alt="SelectImage"></img>
           <span className="block sm:inline">
             You must select a valid date before continuing.
@@ -134,14 +133,16 @@ export const InputTask = () => {
               </div>
 
               <div className="text-gray-400 cursor-pointer">
-                <DeleteOutlineIcon onClick={() => deleteTarea(index)} />
+                <DeleteOutlineIcon
+                  onClick={() => setTarea(deleteTarea(tarea, index))}
+                />
 
                 {<EditNoteIcon onClick={() => editIcon(index)} />}
               </div>
             </label>
           ))}
           {addWithoutDate && tarea.length > 0 && (
-            <Button fn={saveTasks} nombre="Guardar"></Button>
+            <Button fn={saveTasks} nombre="Save"></Button>
           )}
         </>
       )}
