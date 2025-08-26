@@ -111,7 +111,7 @@ export const InputTask = () => {
               </div>
             ) : (
               <div className="flex items-end w-140 px-4 py-2">
-                <div className="flex-1 flex justify-center items-center">
+                <div className="flex-1 flex justify-between items-end">
                   <p className="text-white mt-5 text-center font-semibold px-4 py-2 rounded-lg shadow-md/30 text-lg">
                     TRAINING
                   </p>

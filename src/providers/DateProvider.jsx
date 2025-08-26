@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { DateContext } from "../context/DateContext";
 
 export const DateProvider = ({ children }) => {

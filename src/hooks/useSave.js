@@ -1,39 +1,26 @@
 //Estado para guardar las tareas
 
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { TareaContext } from "../context/tareaContext";
 import { DateContext } from "../context/DateContext";
 
 export const useSave = () => {
-  const {
-    taskSaved,
-    setTaskSaved,
-    tarea,
-    setTarea,
-    setGruposTask,
-    isLoadingToNotes,
-    setisLoadingToNotes,
-  } = useContext(TareaContext);
+  const { tarea, setTarea, setGruposTask, setisLoadingToHome } =
+    useContext(TareaContext);
 
   const { day } = useContext(DateContext);
-
-  //Funcion para guardar los grupos de tareas
-
-  const saveGroupTask = () => {
-    setGruposTask((prev) => [...prev, { day, taskSaved }]);
-  };
 
   //FUNCION GUARDAR
 
   const saveTasks = () => {
-    setTaskSaved(tarea);
-    setisLoadingToNotes(true);
-    setTarea([]);
-    saveGroupTask();
+    setGruposTask((prev) => [...prev, { day, tarea }]);
+    setisLoadingToHome(true);
 
     setTimeout(() => {
-      setisLoadingToNotes(false);
+      setisLoadingToHome(false);
     }, 2000);
+
+    setTarea([]);
   };
 
   return { saveTasks };

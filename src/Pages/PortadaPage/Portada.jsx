@@ -4,11 +4,22 @@ import "aos/dist/aos.css";
 import { useEffect } from "react";
 import { Testimonios } from "./Testimonios";
 import InfiniteScrollImages from "../../components/InfiniteScrollImages";
+import { useNavigate } from "react-router";
 
 export const Portada = () => {
   useEffect(() => {
     AOS.init({ duration: 800 });
   }, []);
+
+  const navigate = useNavigate();
+
+  const mostrarLogin = () => {
+    navigate("/login");
+  };
+
+  const mostrarRegister = () => {
+    navigate("/register");
+  };
 
   return (
     <>
@@ -49,6 +60,7 @@ export const Portada = () => {
 
               <ArrowOutwardIcon
                 style={{ fontSize: 90 }}
+                onClick={mostrarLogin}
                 className="border border-amber-50 rounded-full text-amber-50 p-6 cursor-pointer transition-all duration-200 hover:scale-95 hover:rotate-12 hover:shadow-[0_4px_6px_rgba(251,191,36,0.3)] active:scale-90 active:shadow-[0_2px_4px_rgba(251,191,36,0.4)]"
               />
             </div>
@@ -99,6 +111,7 @@ export const Portada = () => {
         hover:bg-amber-300 hover:scale-95 hover:shadow-lg
         active:scale-90 active:shadow-inner cursor-pointer"
               data-aos="fade-up"
+              onClick={mostrarRegister}
             >
               Register Now
             </button>
