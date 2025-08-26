@@ -23,7 +23,7 @@ export const Invite = () => {
               className="text-5xl md:text-7xl font-extrabold text-amber-50 text-right leading-tight"
               data-aos="fade-up"
             >
-              Get stronger together - <br /> track with friends.
+              Get stronger together.
             </h1>
 
             <div className="flex flex-row justify-between items-center mt-10 p-3 ml-2 md:ml-6">

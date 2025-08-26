@@ -37,7 +37,7 @@ export const Portada = () => {
 
           <div className="flex flex-col md:ml-12 mt-10 md:mt-0 w-full p-10">
             <h1
-              className="text-5xl md:text-7xl font-extrabold text-amber-50 text-right leading-tight"
+              className="text-2xl md:text-7xl font-extrabold text-amber-50 text-right leading-tight"
               data-aos="fade-up"
             >
               Track your <br /> workout online.

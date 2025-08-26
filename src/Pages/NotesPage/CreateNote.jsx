@@ -28,6 +28,7 @@ export const CreateNote = () => {
   //Categorias titulo
   const categorySelected = (e) => {
     setCategoriesTitle(e.target.innerText);
+    setAddWithoutCategory(true);
   };
   console.log(categoriesTitle);
 
@@ -64,7 +65,7 @@ export const CreateNote = () => {
 
   //Para saber si hemos seleccionado una categoria
   const isCategorySelected = () => {
-    if (!categoriesTitle && categoriesTitle.includes("Category")) {
+    if (categoriesTitle.includes("Category")) {
       setAddWithoutCategory(false);
     } else {
       setAddWithoutCategory(true);
@@ -87,105 +88,109 @@ export const CreateNote = () => {
         },
       ]);
 
+      isCategorySelected();
       setInputNotas("");
       setisLoadingToNotes(true);
-      isCategorySelected();
     }
   };
 
   console.log(addWithoutCategory);
 
-  console.log("Castegoria", categoriesTitle);
-  console.log("El input: ", inputNotas);
-  console.log("El grupo:", groupNotes);
-
   //Boton guardar
 
   return (
-    <div className="flex flex-col justify-between dark:bg-gray-700 rounded-lg px-10 p-20 ring shadow-xl ring-gray-900/6 w-200 h-120 ">
-      <h1 className="text-2xl font-bold text-left border-b border-amber-200 pb-2 text-stone-300 mb-6 w-full">
+    <div className="flex flex-col bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl px-10 py-12 shadow-xl ring-gray-800/40 w-[60rem] min-h-[30rem]">
+      {/* Título */}
+      <h1 className="text-3xl font-bold text-left border-b border-amber-300 pb-3 text-stone-200 tracking-wide mb-20">
         NOTES
       </h1>
 
-      <div className="flex flex-row gap-12 justify-between w-full h-300 ">
+      <div className="flex flex-row gap-12 w-full">
         {/* Categorías */}
-        <div className="flex flex-col gap-2 text-stone-200 ">
-          <h2 className="text-lg font-semibold text-amber-100 mb-6 ">
-            Categories:
+        <div className="flex flex-col gap-3 text-stone-200 w-1/3">
+          <h2 className="text-lg font-semibold text-amber-200 mb-4 uppercase tracking-wide">
+            Categories
           </h2>
+
           <ul className="flex flex-col gap-3">
             {categories.map((notes, index) => (
               <li
                 key={index}
-                className="flex justify-between gap-30 px-2 py-1 hover:text-amber-300 hover:border-b cursor-pointer"
+                className="flex justify-between items-center px-3 py-2 rounded-md hover:bg-gray-700/60 cursor-pointer transition-all"
                 onClick={categorySelected}
               >
-                {notes}
+                <span className="hover:text-amber-300">{notes}</span>
                 <DeleteOutlineIcon
                   onClick={() => deleteCategoria(index)}
-                  className="text-gray-500"
+                  className="text-gray-400 hover:text-red-500 transition-colors cursor-pointer"
                 />
               </li>
             ))}
 
+            {/* Agregar categoría */}
             {!addCategoryBoolean ? (
               <button
                 onClick={() => setAddCategoryBoolean(true)}
-                className="text-amber-300 italic w-full hover:text-amber-600 cursor-pointer"
+                className="text-amber-300 italic text-sm hover:text-amber-500 cursor-pointer mt-2"
               >
-                Add a new category
+                ➕ Add a new category
               </button>
             ) : (
-              <div className="flex flex-row justify-between">
+              <div className="flex flex-row items-center gap-2 mt-2">
                 <input
                   onChange={onChangeInput}
                   value={inputCategory}
-                  className="bg-gray-400"
+                  className="bg-gray-600 text-white rounded px-2 py-1 focus:outline-none focus:ring focus:ring-amber-300"
+                  placeholder="New category"
                 />
-                <CheckIcon onClick={addCategoryFn} className="cursor-pointer" />
+                <CheckIcon
+                  onClick={addCategoryFn}
+                  className="cursor-pointer text-green-400 hover:text-green-300"
+                />
                 <ClearIcon
                   onClick={() => setAddCategoryBoolean(false)}
-                  className="cursor-pointer"
+                  className="cursor-pointer text-red-400 hover:text-red-300"
                 />
               </div>
             )}
           </ul>
         </div>
 
-        {/* Condicional: error o formulario */}
-        {addWithoutCategory === false ? (
-          <div
-            className="flex flex-col justify-center items-center bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative max-w-md"
-            role="alert"
-          >
-            <strong className="font-bold">ERROR </strong>
-            <img src="/select.gif" alt="SelectImage" />
-            <span className="block sm:inline">
-              You must select a category before continuing.
-            </span>
-          </div>
-        ) : (
-          <div className="flex flex-col gap-2 text-stone-200 items-center">
-            <label
-              htmlFor="categories"
-              className="text-lg font-semibold text-white-100 border p-2 uppercase"
+        {/* Condicional: obligatorio seleccionar categoria */}
+        <div className="flex-1">
+          {addWithoutCategory === false ? (
+            <div
+              className="flex flex-col justify-center items-center bg-red-100 border border-red-400 text-red-700 px-6 py-6 rounded-lg shadow-inner max-w-md mx-auto"
+              role="alert"
             >
-              {categoriesTitle || "Category"}
-            </label>
+              <strong className="font-bold mb-2">⚠ ERROR</strong>
+              <img src="/select.gif" alt="Select category" className="w-40" />
+              <span>You must select a category before continuing.</span>
+            </div>
+          ) : (
+            <div className="flex flex-col gap-4 text-stone-200 items-center bg-gray-800/50 rounded-xl p-6 shadow-lg">
+              <label
+                htmlFor="categories"
+                className="text-lg font-semibold text-amber-200 uppercase tracking-wide"
+              >
+                {categoriesTitle || "Category"}
+              </label>
 
-            <textarea
-              onChange={handleInput}
-              value={inputNotas}
-              id="notes"
-              name="notes"
-              rows="10"
-              cols="33"
-              className="bg-amber-100 text-black resize-none w-100 h-40 m-4 p-2 rounded"
-            />
+              <textarea
+                onChange={handleInput}
+                value={inputNotas}
+                id="notes"
+                name="notes"
+                rows="10"
+                cols="33"
+                className="bg-amber-100 text-gray-900 resize-none w-full h-40 p-3 rounded-lg shadow-inner focus:outline-none focus:ring-2 focus:ring-amber-300"
+                placeholder="Write your notes here..."
+              />
 
-            <Button fn={saveNotes} nombre="Save" className="w-30" />
-          </div>
-        )}
+              <Button fn={saveNotes} nombre="Save" />
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
