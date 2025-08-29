@@ -15,7 +15,7 @@ export const Navbar = () => {
 
   return (
     <>
-      <nav className="fixed top-10 left-6 w-28 h-[43rem] text-slate-300 dark:bg-gray-700 shadow-md rounded-xl px-4 py-6">
+      <nav className="fixed top-0 left-0 w-28 h-full text-slate-300 dark:bg-gray-700 shadow-md  py-6">
         <div className="flex flex-col  items-center h-full">
           <div className="mb-6 self-center border-1 p-2">
             <Link to="/portada">

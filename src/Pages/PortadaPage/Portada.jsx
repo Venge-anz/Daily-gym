@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { Testimonios } from "./Testimonios";
 import InfiniteScrollImages from "../../components/InfiniteScrollImages";
 import { useNavigate } from "react-router";
+import { Footer } from "../../components/Footer";
 
 export const Portada = () => {
   useEffect(() => {
@@ -23,7 +24,7 @@ export const Portada = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center mt-24 justify-center md:px-40 mx-auto">
+      <div className="flex flex-col items-center justify-center md:px-40 mx-auto">
         {/* Primera sección */}
         <div
           className="flex flex-col md:flex-row items-center md:items-start w-full bg-gradient-to-br from-gray-800 via-gray-700 to-gray-900 rounded-2xl px-10 py-12 shadow-2xl"
@@ -93,7 +94,7 @@ export const Portada = () => {
             />
           </div>
           {/* Card 2 - Free Account */}
-          <div className="flex ml-20 flex-col items-center w-90 bg-gradient-to-br from-gray-800 via-gray-700 to-gray-900 rounded-2xl px-8 py-9 shadow-2xl">
+          <div className="flex ml-20 flex-col items-center w-90 bg-gradient-to-br from-gray-800 via-gray-700 to-gray-900 rounded-2xl px-8 py-9 shadow-2xl overflow-hidden">
             <p
               className="text-3xl font-extrabold text-center text-amber-300 leading-snug mb-6"
               data-aos="fade-up"
@@ -162,6 +163,7 @@ export const Portada = () => {
           <Testimonios />
         </div>
         <InfiniteScrollImages></InfiniteScrollImages>
+        <Footer></Footer>
       </div>
     </>
   );

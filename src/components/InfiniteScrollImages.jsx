@@ -18,8 +18,8 @@ const InfiniteScrollImages = () => {
       </h1>
       {/* Gradientes de opacidad en los bordes */}
       <div className="pointer-events-none absolute top-0 left-0 w-full h-full z-10">
-        <div className="absolute top-0 left-0 h-full w-16 bg-gradient-to-r from-[rgb(237,28,207)] to-transparent" />
-        <div className="absolute top-0 right-0 h-full w-16 bg-gradient-to-l from-[rgb(237,28,207)] to-transparent" />
+        <div className="absolute top-0 left-0 h-full w-16 bg-gradient-to-r from-[rgb(17,24,39)] to-transparent" />
+        <div className="absolute top-0 right-0 h-full w-16 bg-gradient-to-l from-[rgb(17,24,39))] to-transparent" />
       </div>
 
       <motion.div

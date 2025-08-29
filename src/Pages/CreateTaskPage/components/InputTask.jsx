@@ -60,7 +60,7 @@ export const InputTask = () => {
     <>
       {addWithoutDate === false ? (
         <div
-          className="flex flex-col justify-center items-center bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative max-w-md"
+          className="flex flex-col justify-center items-center bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative max-w-md "
           role="alert"
         >
           <strong className="font-bold">⚠ ERROR </strong>
@@ -82,7 +82,7 @@ export const InputTask = () => {
 
             {modoEdicion === false ? (
               <Button
-                className="bg-[#477984] text-white px-4 cursor-pointer py-2 rounded-l-md transition-all duration-200 border-2 border-transparent hover:border-pink-400"
+                className="bg-[#477984] text-white px-4 transform-none transition-none cursor-pointer py-2 rounded-l-md  border-2 border-transparent hover:border-pink-400"
                 fn={addTarea}
                 nombre="Add"
               />
@@ -104,7 +104,7 @@ export const InputTask = () => {
                 <p className="border">WELL DONE!</p>
               </div>
             ) : tarea.length <= 0 ? (
-              <div className="text-gray-500 mt-30 text-center font-semibold rounded-lg shadow-md/30 p-5 w-40">
+              <div className="text-gray-400 bg-gray-800 mt-30 text-center font-semibold rounded-lg shadow-md/30 p-5 w-40">
                 <img src="/muscle.gif" alt="training" />
                 <p className="border">NO RESULTS</p>
               </div>
