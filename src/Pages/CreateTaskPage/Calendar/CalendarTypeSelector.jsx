@@ -13,7 +13,7 @@ export const CalendarTypeSelector = () => {
 
   return (
     <>
-      <div className="flex flex-col justify-center items-center dark:bg-gray-700 rounded-lg px-6 py-8 ring shadow-xl ring-gray-900/6 w-full max-w-md">
+      <div className="flex flex-col justify-center items-center dark:bg-gray-700 rounded-lg px-6 py-8 ring shadow-xl ring-gray-900/6 w-full max-w-md ">
         <h1 className="text-lg font-semibold text-left border border-amber-50 p-2 text-stone-300 mb-10">
           JUST
           <br />

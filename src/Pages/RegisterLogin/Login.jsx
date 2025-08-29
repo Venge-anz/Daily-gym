@@ -7,8 +7,6 @@ export const Login = () => {
           Login
         </p>
 
-        {/* Imagen */}
-
         {/* Formulario */}
         <form className="w-full space-y-4">
           <input

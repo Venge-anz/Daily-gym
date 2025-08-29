@@ -17,7 +17,7 @@ export const Notes = () => {
     <div className="flex flex-col justify-center items-center w-full md:w-[70rem] md:h-[40rem] rounded-2xl shadow-lg ring-1 ring-gray-800/40 bg-gradient-to-br from-gray-900 to-gray-800 p-8">
       {groupNotes.length <= 0 ? (
         <div className="flex flex-col items-center justify-center text-center text-gray-400 bg-gray-700/40 rounded-xl px-10 py-12 shadow-inner">
-          <p className="text-lg font-medium">No hay notas guardadas</p>
+          <p className="text-lg font-medium">There are no saved notes</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full">
@@ -48,7 +48,7 @@ export const Notes = () => {
       <div className="mt-8">
         <Button
           fn={mostrarCrearNota}
-          nombre={"➕ Añadir nota"}
+          nombre={"➕ Add note"}
           className="bg-pink-600 hover:bg-pink-500 text-white px-6 py-3 rounded-xl shadow-md transition-all duration-200"
         />
       </div>
